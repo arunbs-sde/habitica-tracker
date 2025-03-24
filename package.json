@@ -2,7 +2,7 @@
   "name": "habitica-tracker",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://ddycai.github.io/habitica-tracker",
+  "homepage": "http://arunbs-sde.github.io/habitica-tracker",
   "dependencies": {
     "@primer/octicons-react": "^10.1.0",
     "@testing-library/jest-dom": "^4.2.4",
