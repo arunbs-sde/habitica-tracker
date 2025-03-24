@@ -1,21 +1,14 @@
 {
   "files": {
-    "main.css": "/habitica-tracker/static/css/main.b6e5a58d.chunk.css",
-    "main.js": "/habitica-tracker/static/js/main.b06fca55.chunk.js",
-    "main.js.map": "/habitica-tracker/static/js/main.b06fca55.chunk.js.map",
-    "runtime-main.js": "/habitica-tracker/static/js/runtime-main.ae0b5293.js",
-    "runtime-main.js.map": "/habitica-tracker/static/js/runtime-main.ae0b5293.js.map",
-    "static/js/2.eb8fe21b.chunk.js": "/habitica-tracker/static/js/2.eb8fe21b.chunk.js",
-    "static/js/2.eb8fe21b.chunk.js.map": "/habitica-tracker/static/js/2.eb8fe21b.chunk.js.map",
+    "main.css": "/habitica-tracker/static/css/main.e472071b.css",
+    "main.js": "/habitica-tracker/static/js/main.aa867615.js",
     "index.html": "/habitica-tracker/index.html",
-    "static/css/main.b6e5a58d.chunk.css.map": "/habitica-tracker/static/css/main.b6e5a58d.chunk.css.map",
-    "static/js/2.eb8fe21b.chunk.js.LICENSE.txt": "/habitica-tracker/static/js/2.eb8fe21b.chunk.js.LICENSE.txt",
-    "static/media/difficulty-trivial.b863dbce.svg": "/habitica-tracker/static/media/difficulty-trivial.b863dbce.svg"
+    "static/media/difficulty-trivial.svg": "/habitica-tracker/static/media/difficulty-trivial.36ec614414b2e4c309b5b165af2e4eeb.svg",
+    "main.e472071b.css.map": "/habitica-tracker/static/css/main.e472071b.css.map",
+    "main.aa867615.js.map": "/habitica-tracker/static/js/main.aa867615.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.ae0b5293.js",
-    "static/js/2.eb8fe21b.chunk.js",
-    "static/css/main.b6e5a58d.chunk.css",
-    "static/js/main.b06fca55.chunk.js"
+    "static/css/main.e472071b.css",
+    "static/js/main.aa867615.js"
   ]
 }
