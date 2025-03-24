@@ -1,5 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
-
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import UserHistory from "./UserHistory";
 
@@ -11,93 +10,38 @@ export enum AppState {
   ERROR,
 }
 
+// ✅ Hardcode your user ID and API key here:
+const HARD_CODED_USER_ID = "e1b6023c-c5ce-4143-ba05-1c0f0649c1c3";
+const HARD_CODED_API_KEY = "07947907-3092-43a8-9c5f-6c9cce2db1ea";
+
+
 function App() {
   const [userId, setUserId] = useState<string>("");
   const [userApiKey, setUserApiKey] = useState<string>("");
   const [error, setError] = useState<Error>();
-  const [appState, setAppState] = useState<AppState>(
-    AppState.PROMPT_FOR_USER_CREDS
-  );
+  const [appState, setAppState] = useState<AppState>(AppState.PROMPT_FOR_USER_CREDS);
 
   const setAppError = (error: Error) => {
     setError(error);
     setAppState(AppState.ERROR);
   };
 
-  const handleUserIdChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setUserId(event.target.value);
-  };
+  // Set hardcoded values
+  useEffect(() => {
+    setUserId(HARD_CODED_USER_ID);
+    setUserApiKey(HARD_CODED_API_KEY);
+  }, []);
 
-  const handleUserApiKeyChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setUserApiKey(event.target.value);
-  };
+  // Submit after states are set
+  useEffect(() => {
+    if (userId && userApiKey) {
+      setAppState(AppState.USER_INPUT_ACCEPTED);
+    } else if (userId || userApiKey) {
+      setAppError(new Error("User ID or API Key is missing"));
+    }
+  }, [userId, userApiKey]);
 
-  const handleSubmit = (event: React.MouseEvent) => {
-    event.preventDefault();
-    setAppState(AppState.USER_INPUT_ACCEPTED);
-  };
-
-  if (
-    appState === AppState.PROMPT_FOR_USER_CREDS ||
-    appState === AppState.ERROR
-  ) {
-    return (
-      <div className="App">
-        <h1>Habitica Tracker</h1>
-        {error && <div className="error">Error: {error.message}</div>}
-        <p>
-          This tool displays a history of your Habits, Dailies and Todos in
-          Habitica.
-        </p>
-        <p>
-          Your User ID and API key can be found on the{" "}
-          <a
-            href="https://habitica.com/user/settings/api"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Settings &gt; API
-          </a>{" "}
-          page in Habitica.
-        </p>
-        <form className="user-api-form">
-          <div className="label-container">
-            <div className="label">User ID</div>
-            <input
-              type="text"
-              className="user-id"
-              value={userId}
-              onChange={handleUserIdChange}
-            />
-          </div>
-          <div className="label-container">
-            <span className="label">API Key</span>
-            <input
-              type="password"
-              className="api-key"
-              value={userApiKey}
-              onChange={handleUserApiKeyChange}
-              minLength={36}
-            />
-          </div>
-          <div className="submit-wrapper">
-            <input type="submit" value="Fetch My Data" onClick={handleSubmit} />
-          </div>
-        </form>
-        <h2>Note</h2>
-        <ul>
-          <li>
-            Your user ID and API key will be sent to the Habitica servers and
-            nowhere else.
-          </li>
-          <li>
-            This app does not change your Habitica account data. It only fetches
-            and displays data.
-          </li>
-        </ul>
-      </div>
-    );
-  } else {
+  if (appState === AppState.USER_INPUT_ACCEPTED) {
     return (
       <UserHistory
         userId={userId}
@@ -106,6 +50,16 @@ function App() {
       />
     );
   }
+
+  return (
+    <div className="App">
+      <h1>Habitica Tracker</h1>
+      {error && <div className="error">Error: {error.message}</div>}
+      <p>
+        Hardcoded credentials missing. Please check your code and provide `HARD_CODED_USER_ID` and `HARD_CODED_API_KEY`.
+      </p>
+    </div>
+  );
 }
 
 export default App;
